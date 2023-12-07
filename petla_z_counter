@@ -1,0 +1,14 @@
+x = int(input("Liczba: "))
+if x < 0:
+    czynnik = -1
+else:
+    czynnik = 1
+counter = 0
+while 1 == 1:
+    print("counter =", counter)
+    if counter == x:
+        break
+    counter += czynnik
+
+print("I'm out.")
+print("Koniec.")

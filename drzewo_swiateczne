@@ -1,0 +1,10 @@
+wysokosc = 10
+
+for y in range(wysokosc):
+    for z in range(wysokosc - y - 1):
+        print(" ", end='')
+
+    for z in range(2 * y + 1):
+        print("*", end='')
+
+    print()

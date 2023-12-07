@@ -1,0 +1,8 @@
+startowa_liczba = int(input("Podaj początkową liczbę do ciągu: "))
+ciag = ""
+
+for _ in range(5):
+    ciag += str(startowa_liczba) + " "
+    startowa_liczba -= 2
+
+print(ciag.strip())

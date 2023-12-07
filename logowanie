@@ -1,0 +1,14 @@
+def logowanie():
+    bazadanych = {"login": "admin", "password": "qwerty"}
+
+    while True:
+        login = input("Podaj login: ")
+        haslo = input("Podaj haslo: ")
+
+        if login == bazadanych["login"] and haslo == bazadanych["password"]:
+            print("Sukces! Zalogowano.")
+            break
+        else:
+            print("Błędny login lub hasło. Spróbuj ponownie.")
+
+logowanie()

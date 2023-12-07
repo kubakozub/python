@@ -1,0 +1,22 @@
+# Inicjalizacja pustej listy na marki pojazdów
+lista_pojazdow = []
+
+# Pierwsza pętla do pobierania 4 marek pojazdów od użytkownika
+for i in range(4):
+    marka = input("Podaj markę pojazdu: ")
+    lista_pojazdow.append(marka)
+
+# Druga pętla do sprawdzenia, czy lista powinna być wyświetlona
+while True:
+    odpowiedz = input("Czy chcesz wyświetlić listę pojazdów? (tak/nie): ")
+    
+    if odpowiedz.lower() == "tak":
+        print("Lista pojazdów:")
+        for pojazd in lista_pojazdow:
+            print(pojazd)
+        break
+    elif odpowiedz.lower() == "nie":
+        print("Lista nie zostanie wyświetlona.")
+        break
+    else:
+        print("Nieprawidłowa odpowiedź. Podaj 'tak' lub 'nie'.")

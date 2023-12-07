@@ -1,0 +1,10 @@
+slowo = input("Wprowadź dowolne słowo: ")
+
+cyfra = input(f"Wprowadź cyfrę od 0 do {len(slowo) - 1}: ")
+
+print("tablica:")
+if len(cyfra) > 0 and cyfra.isdigit() and 0 <= int(cyfra) < len(slowo):
+    indeks = int(cyfra)
+    print(f"Znak odpowiadający cyfrze {indeks} w słowie {slowo}: {slowo[indeks]}")
+else:
+    print(f"Wprowadź poprawną cyfrę od 0 do {len(slowo) - 1}.")

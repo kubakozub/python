@@ -1,0 +1,13 @@
+kolory = ["cyjan", "magenta", "żółty", "kobalt"]
+
+print("Aktualna lista kolorów:", kolory)
+
+kolor_do_usuniecia = input("Wprowadź kolor do usunięcia: ")
+
+if kolor_do_usuniecia in kolory:
+    indeks_do_usuniecia = kolory.index(kolor_do_usuniecia)
+    del kolory[indeks_do_usuniecia]
+    print(f"Usunięto kolor {kolor_do_usuniecia}.")
+    print("Zaktualizowana lista kolorów:", kolory)
+else:
+    print(f"Kolor {kolor_do_usuniecia} nie istnieje na liście.")

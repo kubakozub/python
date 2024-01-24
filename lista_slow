@@ -1,0 +1,80 @@
+from tkinter import Tk, filedialog
+import deepl
+
+auth_key = 'a03a0227-db12-7784-2d27-b6d4e2a4b23f:fx'
+translator = deepl.Translator(auth_key)
+
+def translate_text(text, source_language, target_language):
+    result = translator.translate_text(text, source_lang=source_language, target_lang=target_language)
+    return result.text
+
+def get_language_name(lang_code):
+    languages = {
+        'EN-GB': 'English (GB)',
+        'EN-US': 'English (US)',
+        'ES': 'Spanish',
+        'PL': 'Polish',
+    }
+    return languages.get(lang_code.upper(), lang_code)
+
+def create_word_list():
+    print("Choose source language code: 'EN' for English, 'ES' for Spanish, 'PL' for Polish")
+    source_lang = input("Enter the source language code: ").upper()
+
+    if source_lang not in ['EN', 'ES', 'PL']:
+        print("Invalid language code. Please enter 'EN', 'ES', or 'PL'.")
+        return []
+
+    word_list = []
+
+    # Szukam sposobu jak to zautomatyzować.
+    skip_words = {'bury', 'tire'}
+
+    while True:
+        word = input("Enter a word (type 'exit' to finish or save): ")
+        if word.lower() == 'exit':
+            break
+
+        if word in skip_words:
+            print(f"The word '{word}' exists in English or Spanish. Skipping translation.")
+            continue
+
+        target_languages = ['EN-GB', 'ES']
+
+        for target_lang in target_languages:
+            if target_lang != source_lang:
+                translation = translate_text(word, source_lang, target_lang)
+                print(f"Translation from {get_language_name(source_lang)} to {get_language_name(target_lang)}: {translation}")
+                word_list.append(f"{word} ({get_language_name(source_lang)}) - {translation} ({get_language_name(target_lang)})")
+
+    return word_list
+
+def save_word_list(word_list):
+    Tk().withdraw()
+    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt")])
+    if file_path:
+        with open(file_path, 'w', encoding='utf-8') as file:
+            for word in word_list:
+                file.write(word + '\n')
+        print(f"Word list has been saved to the file: {file_path}")
+    else:
+        print("Save operation canceled.")
+
+def display_word_list(word_list):
+    print("Your word list:")
+    for i, word in enumerate(word_list, 1):
+        print(f"{i}. {word}")
+
+def main():
+    print("Welcome to the word list creation program!")
+
+    word_list = create_word_list()
+    save_word_list_choice = input("Do you want to save the word list to a file? (Yes/No): ").lower()
+
+    if save_word_list_choice == 'yes':
+        save_word_list(word_list)
+
+    display_word_list(word_list)
+
+if __name__ == "__main__":
+    main()
